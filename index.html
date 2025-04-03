@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gyaniq</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="screen active">
+      <div class="logo-container">
+          <img src="C:\Users\HP\Downloads\Gyaniq.gif" alt="Quiz Logo" class="rotating-logo">
+      </div>
+      <h2>Tech Quiz Master</h2>
+      <div class="progress-container">
+          <div class="progress-bar" id="loading-progress"></div>
+      </div>
+      <p id="loading-percentage">0%</p>
+  </div>
+
+  <!-- Topic Selection Screen -->
+  <div id="topic-selection" class="screen">
+      <h2>Select a Topic</h2>
+      <div class="topics-grid">
+          <!-- Topic cards will be generated dynamically -->
+      </div>
+  </div>
+
+  <!-- Set Selection Screen -->
+  <div id="set-selection" class="screen">
+      <h2>Select a Question Set for <span id="selected-topic-title">Topic</span></h2>
+      <div class="sets-container">
+          <!-- Set cards will be generated dynamically -->
+      </div>
+      <button id="back-to-topics" class="back-button">Back to Topics</button>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="quiz-screen" class="screen">
+      <div class="quiz-header">
+          <div class="quiz-info">
+              <h3 id="quiz-topic">Topic: <span id="current-topic">OS</span></h3>
+              <h3 id="quiz-set">Set: <span id="current-set">1</span></h3>
+          </div>
+          <div class="quiz-progress">
+              <span id="question-number">Question 1/30</span>
+          </div>
+          <div id="timer" class="timer">30s</div>
+      </div>
+
+      <div id="question-container" class="question-container">
+          <h2 id="question-text">Question text will appear here</h2>
+          <div class="options-container" id="options-container">
+              <!-- Options will be added dynamically -->
+          </div>
+      </div>
+
+      <div class="quiz-navigation">
+          <button id="prev-button" class="nav-button">Previous</button>
+          <button id="next-button" class="nav-button">Next</button>
+          <button id="submit-button" class="nav-button submit-button">Submit Quiz</button>
+      </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="results-screen" class="screen">
+      <h2>Quiz Results</h2>
+      
+      <div class="score-circle">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg"
+                  d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path id="circle-progress" class="circle"
+                  stroke-dasharray="0, 100"
+                  d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          </svg>
+          <div class="percentage" id="score-percentage">0%</div>
+      </div>
+      
+      <p class="score-text">You scored <span id="correct-answers">0</span> out of <span id="total-questions">30</span></p>
+      <p id="feedback-text" class="feedback-text">Keep learning! You can do better!</p>
+      
+      <div class="result-buttons">
+          <button id="review-button" class="result-button">Review Answers</button>
+          <button id="restart-button" class="result-button">Try Again</button>
+          <button id="home-button" class="result-button">Back to Topics</button>
+      </div>
+  </div>
+
+  <!-- Review Screen -->
+  <div id="review-screen" class="screen">
+      <div class="review-header">
+          <h2>Review Answers</h2>
+          <div class="review-progress">
+              <span id="review-question-number">Question 1/30</span>
+          </div>
+      </div>
+
+      <div id="review-question-container" class="question-container">
+          <h2 id="review-question-text">Question text will appear here</h2>
+          <div class="options-container" id="review-options-container">
+              <!-- Options will be added dynamically -->
+          </div>
+      </div>
+
+      <div class="review-navigation">
+          <button id="review-prev-button" class="nav-button">Previous</button>
+          <button id="review-next-button" class="nav-button">Next</button>
+          <button id="back-to-results-button" class="nav-button">Back to Results</button>
+      </div>
+  </div>
+
+  <!-- Celebration Animation Container -->
+  <div id="celebration-container" class="celebration-container"></div>
+  
+  <!-- Sad Animation Container -->
+  <div id="sad-container" class="sad-container">
+      <div class="sad-emoji">😢</div>
+  </div>
+
+  <!-- IMPORTANT: Load quiz-data.js BEFORE script.js -->
+  <script src="quiz-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
