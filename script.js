@@ -23,6 +23,106 @@ document.addEventListener("DOMContentLoaded", () => {
             ],
             correctAnswer: "To manage hardware resources",
           },
+          {
+          question: "What is the primary purpose of an operating system?" ,
+          options: [
+"To provide a user interface",
+"To manage hardware resources",
+"To run application software",
+"To connect to the internet"
+],
+correctAnswer: "To manage hardware resources"
+          },
+          {
+question: "Which component of the operating system is responsible for managing memory?",
+options: [
+"File system",
+"Memory manager",
+"Process scheduler",
+"Device driver"
+],
+correctAnswer: "Memory manager"
+          },
+          {
+question: "What does GUI stand for in operating systems?",
+options: [
+"Graphical User Interaction",
+"Graphical User Interface",
+"Graphical Unified Interface",
+"General User Interface"
+],
+correctAnswer: "Graphical User Interface"
+          },
+          
+          {
+question: "Which of the following is an example of an open-source operating system?",
+options: [
+"Windows",
+"Linux",
+"MacOS",
+"DOS"
+],
+correctAnswer: "Linux"
+  },
+          {
+question: "What is multitasking in operating systems?",
+options: [
+"Running multiple processes simultaneously",
+"Running a single process",
+"Running processes sequentially",
+"Running background services only"
+],
+correctAnswer: "Running multiple processes simultaneously"
+          },
+          {
+question: "Which of the following is NOT a function of an operating system?",
+options: [
+"Managing hardware resources",
+"Providing a user interface",
+"Running application software",
+"Manufacturing hardware components"
+],
+correctAnswer: "Manufacturing hardware components"
+          },
+          {
+question: "What is the main function of a command interpreter in an operating system?",
+options: [
+"To provide the interface between API and application program",
+"To handle the files in the operating system",
+"To get and execute the next user-specified command",
+"To manage hardware resources"
+],
+correctAnswer: "To get and execute the next user-specified command"
+          },
+          {
+question: "Which of the following is a real-time operating system?",
+options: [
+"Windows",
+"Unix",
+"RTOS",
+"Linux"
+],
+correctAnswer: "RTOS"
+          },
+          {
+question: "What is the role of a device controller in a computer system?",
+options: [
+"Execute all programs sent to it",
+"In charge of a specific device type",
+"Manage the operating system functions",
+"Control access to all resources"
+],
+correctAnswer: "In charge of a specific device type"
+          },
+          {
+question: "Which interface is typically used to access the services of an operating system?",
+options: [
+"System calls",
+"API",
+"Library",
+"Assembly instructions"
+],
+correctAnswer: "System calls"
         ],
       },
     }
@@ -54,15 +154,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const scorePercentage = document.getElementById("score-percentage")
   const circleProgress = document.getElementById("circle-progress")
   const correctAnswers = document.getElementById("correct-answers")
-  const totalQuestions = document.getElementById("total-questions")
+  const totalquestions = document.getElementById("total-questions")
   const feedbackText = document.getElementById("feedback-text")
   const reviewButton = document.getElementById("review-button")
   const restartButton = document.getElementById("restart-button")
   const homeButton = document.getElementById("home-button")
 
-  const reviewQuestionNumber = document.getElementById("review-question-number")
-  const reviewQuestionText = document.getElementById("review-question-text")
-  const reviewOptionsContainer = document.getElementById("review-options-container")
+  const reviewquestionNumber = document.getElementById("review-question-number")
+  const reviewquestionText = document.getElementById("review-question-text")
+  const reviewoptionsContainer = document.getElementById("review-options-container")
   const reviewPrevButton = document.getElementById("review-prev-button")
   const reviewNextButton = document.getElementById("review-next-button")
   const backToResultsButton = document.getElementById("back-to-results-button")
@@ -73,8 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Quiz State
   let selectedTopic = ""
   let selectedSet = ""
-  let currentQuestions = []
-  let currentQuestionIndex = 0
+  let currentquestions = []
+  let currentquestionIndex = 0
   let userAnswers = []
   let timeRemaining = 30
   let timerInterval
@@ -191,8 +291,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // Quiz navigation
-    prevButton.addEventListener("click", goToPreviousQuestion)
-    nextButton.addEventListener("click", goToNextQuestion)
+    prevButton.addEventListener("click", goToPreviousquestion)
+    nextButton.addEventListener("click", goToNextquestion)
     submitButton.addEventListener("click", submitQuiz)
 
     // Results screen
@@ -210,8 +310,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // Review navigation
-    reviewPrevButton.addEventListener("click", goToPreviousReviewQuestion)
-    reviewNextButton.addEventListener("click", goToNextReviewQuestion)
+    reviewPrevButton.addEventListener("click", goToPreviousReviewquestion)
+    reviewNextButton.addEventListener("click", goToNextReviewquestion)
     backToResultsButton.addEventListener("click", () => {
       showScreen(resultsScreen)
     })
@@ -228,19 +328,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start the quiz
   function startQuiz() {
     // Get questions for the selected topic and set
-    currentQuestions = getQuestions(selectedTopic, selectedSet)
-    console.log(`Starting quiz with ${currentQuestions.length} questions`)
+    currentquestions = getquestions(selectedTopic, selectedSet)
+    console.log(`Starting quiz with ${currentquestions.length} questions`)
 
     // Initialize quiz state
-    currentQuestionIndex = 0
-    userAnswers = Array(currentQuestions.length).fill(null)
+    currentquestionIndex = 0
+    userAnswers = Array(currentquestions.length).fill(null)
 
     // Update UI
     currentTopic.textContent = selectedTopicTitle.textContent
     currentSet.textContent = selectedSet
 
     // Show first question
-    showQuestion()
+    showquestion()
 
     // Start timer
     startTimer()
@@ -250,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Get questions for the selected topic and set
-  function getQuestions(topic, set) {
+  function getquestions(topic, set) {
     console.log(`Getting questions for ${topic} set ${set}`)
     console.log(`Available topics: ${Object.keys(window.quizData).join(", ")}`)
 
@@ -266,11 +366,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Show the current question
-  function showQuestion() {
-    const question = currentQuestions[currentQuestionIndex]
+  function showquestion() {
+    const question = currentquestions[currentquestionIndex]
 
     // Update question number
-    questionNumber.textContent = `Question ${currentQuestionIndex + 1}/${currentQuestions.length}`
+    questionNumber.textContent = `question ${currentquestionIndex + 1}/${currentquestions.length}`
 
     // Update question text
     questionText.textContent = question.question
@@ -282,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
     question.options.forEach((option, index) => {
       const optionElement = document.createElement("div")
       optionElement.className = "option"
-      if (userAnswers[currentQuestionIndex] === option) {
+      if (userAnswers[currentquestionIndex] === option) {
         optionElement.classList.add("selected")
       }
 
@@ -310,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Select an option
   function selectOption(option) {
-    userAnswers[currentQuestionIndex] = option
+    userAnswers[currentquestionIndex] = option
 
     // Update UI to show selected option
     const options = optionsContainer.querySelectorAll(".option")
@@ -324,28 +424,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Go to the previous question
-  function goToPreviousQuestion() {
-    if (currentQuestionIndex > 0) {
-      currentQuestionIndex--
-      showQuestion()
+  function goToPreviousquestion() {
+    if (currentquestionIndex > 0) {
+      currentquestionIndex--
+      showquestion()
       resetTimer()
     }
   }
 
   // Go to the next question
-  function goToNextQuestion() {
-    if (currentQuestionIndex < currentQuestions.length - 1) {
-      currentQuestionIndex++
-      showQuestion()
+  function goToNextquestion() {
+    if (currentquestionIndex < currentquestions.length - 1) {
+      currentquestionIndex++
+      showquestion()
       resetTimer()
     }
   }
 
   // Update navigation buttons
   function updateNavigationButtons() {
-    prevButton.disabled = currentQuestionIndex === 0
+    prevButton.disabled = currentquestionIndex === 0
 
-    if (currentQuestionIndex === currentQuestions.length - 1) {
+    if (currentquestionIndex === currentquestions.length - 1) {
       nextButton.style.display = "none"
       submitButton.style.display = "block"
     } else {
@@ -373,8 +473,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(timerInterval)
 
         // Auto-move to next question or submit if on last question
-        if (currentQuestionIndex < currentQuestions.length - 1) {
-          goToNextQuestion()
+        if (currentquestionIndex < currentquestions.length - 1) {
+          goToNextquestion()
         } else {
           submitQuiz()
         }
@@ -394,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Calculate score
     const score = calculateScore()
-    const percentage = Math.round((score / currentQuestions.length) * 100)
+    const percentage = Math.round((score / currentquestions.length) * 100)
 
     // Update results screen
     scorePercentage.textContent = `${percentage}%`
@@ -410,7 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     correctAnswers.textContent = score
-    totalQuestions.textContent = currentQuestions.length
+    totalquestions.textContent = currentquestions.length
 
     // Set feedback text
     if (percentage >= 90) {
@@ -435,8 +535,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Calculate the score
   function calculateScore() {
     let score = 0
-    for (let i = 0; i < currentQuestions.length; i++) {
-      if (userAnswers[i] === currentQuestions[i].correctAnswer) {
+    for (let i = 0; i < currentquestions.length; i++) {
+      if (userAnswers[i] === currentquestions[i].correctAnswer) {
         score++
       }
     }
@@ -445,22 +545,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize review mode
   function initReviewMode() {
-    currentQuestionIndex = 0
-    showReviewQuestion()
+    currentquestionIndex = 0
+    showReviewquestion()
   }
 
   // Show review question
-  function showReviewQuestion() {
-    const question = currentQuestions[currentQuestionIndex]
+  function showReviewquestion() {
+    const question = currentquestions[currentquestionIndex]
 
     // Update question number
-    reviewQuestionNumber.textContent = `Question ${currentQuestionIndex + 1}/${currentQuestions.length}`
+    reviewquestionNumber.textContent = `question ${currentquestionIndex + 1}/${currentquestions.length}`
 
     // Update question text
-    reviewQuestionText.textContent = question.question
+    reviewquestionText.textContent = question.question
 
     // Clear options container
-    reviewOptionsContainer.innerHTML = ""
+    reviewoptionsContainer.innerHTML = ""
 
     // Add options with correct/incorrect indicators
     question.options.forEach((option, index) => {
@@ -469,14 +569,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (option === question.correctAnswer) {
         optionElement.classList.add("correct")
-      } else if (userAnswers[currentQuestionIndex] === option) {
+      } else if (userAnswers[currentquestionIndex] === option) {
         optionElement.classList.add("incorrect")
       }
 
       let iconHtml = ""
       if (option === question.correctAnswer) {
         iconHtml = '<span class="option-icon">✓</span>'
-      } else if (userAnswers[currentQuestionIndex] === option) {
+      } else if (userAnswers[currentquestionIndex] === option) {
         iconHtml = '<span class="option-icon">✗</span>'
       }
 
@@ -486,27 +586,27 @@ document.addEventListener("DOMContentLoaded", () => {
         ${iconHtml}
       `
 
-      reviewOptionsContainer.appendChild(optionElement)
+      reviewoptionsContainer.appendChild(optionElement)
     })
 
     // Update navigation buttons
-    reviewPrevButton.disabled = currentQuestionIndex === 0
-    reviewNextButton.disabled = currentQuestionIndex === currentQuestions.length - 1
+    reviewPrevButton.disabled = currentquestionIndex === 0
+    reviewNextButton.disabled = currentquestionIndex === currentquestions.length - 1
   }
 
   // Go to previous review question
-  function goToPreviousReviewQuestion() {
-    if (currentQuestionIndex > 0) {
-      currentQuestionIndex--
-      showReviewQuestion()
+  function goToPreviousReviewquestion() {
+    if (currentquestionIndex > 0) {
+      currentquestionIndex--
+      showReviewquestion()
     }
   }
 
   // Go to next review question
-  function goToNextReviewQuestion() {
-    if (currentQuestionIndex < currentQuestions.length - 1) {
-      currentQuestionIndex++
-      showReviewQuestion()
+  function goToNextReviewquestion() {
+    if (currentquestionIndex < currentquestions.length - 1) {
+      currentquestionIndex++
+      showReviewquestion()
     }
   }
 
@@ -567,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Reset quiz state
   function resetQuiz() {
     clearInterval(timerInterval)
-    currentQuestionIndex = 0
+    currentquestionIndex = 0
     userAnswers = []
   }
 
